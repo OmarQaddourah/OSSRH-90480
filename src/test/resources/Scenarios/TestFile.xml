@@ -2,16 +2,7 @@
 <suite name="Smoke Test For Appearance Classes">
     <test name=" --Appearance Classes--" preserve-order="true">
         <classes>
-
-            --Appearance Classes--
-            <class name="com.vetrina.reg.merchant.appearance.BrandingTest"/>
-            <class name="com.vetrina.reg.merchant.appearance.FooterTest"/>
-            <class name="com.vetrina.reg.merchant.appearance.HomeTest"/>
-            <class name="com.vetrina.reg.merchant.appearance.MenuTest"/>
-            <class name="com.vetrina.reg.merchant.appearance.RecommendationTest"/>
-            <class name="com.vetrina.reg.merchant.appearance.StaticPagesTest"/>
-            <class name="com.vetrina.reg.merchant.appearance.ThemeEditorTest"/>
-
+            <class name="com.test.HomeTest"/>
         </classes>
     </test><!-- test -->
 </suite> <!-- Suite -->
