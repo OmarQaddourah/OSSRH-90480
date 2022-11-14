@@ -54,4 +54,10 @@ public class MobileHelpers extends MobileBaseTest {
             }
         }
     }
+
+    public static void hideKeyboard() {
+        try {
+            appiumDriver.getDriver().hideKeyboard();
+        } catch (Exception ignored) {}
+    }
 }
