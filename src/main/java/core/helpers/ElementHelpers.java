@@ -1,18 +1,17 @@
 package core.helpers;
 
+import com.utils.handler.ElementHelper;
 import core.base.BaseTest;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.util.ArrayList;
 
 public class ElementHelpers extends BaseTest {
 
     private static final String operatingSystem = System.getProperty("os.name");
-    static ArrayList<String> numberOfTabsTwo;
 
     public static void waitForElement(WebElement element, int Time) {
         WebDriverWait wait = new WebDriverWait(webDriver, Time);
@@ -28,27 +27,13 @@ public class ElementHelpers extends BaseTest {
         ((JavascriptExecutor) webDriver).executeScript("arguments[0].scrollIntoView(false);", element);
     }
 
-    public static void scrollBy(String width) {
-        ((JavascriptExecutor) webDriver).executeScript("window.scrollBy(0," + width + ")", "");
+    public static void hoverOnElement(WebElement element) {
+        Actions actions = new Actions(webDriver);
+        actions.moveToElement(element).perform();
     }
 
-    public static void waitForTime(int milis) { // prefer not to be used
-        try {
-            Thread.sleep(milis);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void scrollSlowly(int width) {
-        for (int i = 200; i <= width; i = i + 100) {
-            scrollBy(String.valueOf(width));
-            waitForTime(500);
-        }
-    }
-
-    public static void refreshPage() {
-        webDriver.navigate().refresh();
+    public static void safeClick(WebElement element) {
+        ElementHelper.safeClick(element);
     }
 
     public static void updateAllText(WebElement element, String newText) {
@@ -59,21 +44,11 @@ public class ElementHelpers extends BaseTest {
         }
     }
 
-    public static void switchToTab(int tabIndex) {
-        numberOfTabsTwo = new ArrayList<>(webDriver.getWindowHandles());
-        webDriver.switchTo().window(numberOfTabsTwo.get(tabIndex));
-    }
-
-    public static void scrollToDirection(String direction) {
-        if (direction.equals("bottom")) {
-            ((JavascriptExecutor) webDriver).executeScript("window.scrollBy(0,document.body.scrollHeight)");
+    public static void waitForTime(int millis) { // prefer not to be used
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-        if (direction.equals("top")) {
-            ((JavascriptExecutor) webDriver).executeScript("window.scrollTo(0, 0);");
-        }
-    }
-
-    public static void openNewTab(String url) {
-        ((JavascriptExecutor) webDriver).executeScript("window.open('" + url + "')");
     }
 }
