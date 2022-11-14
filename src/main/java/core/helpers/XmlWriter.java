@@ -19,12 +19,11 @@ public class XmlWriter {
 
     private static final Logger LOGGER = Logger.getLogger(Thread.currentThread().getStackTrace()[0].getClassName());
 
-    public static void writeNode(String parentName, String elementName, String elementValue) {
+    public static void writeToXmlFile(String filePath, String parentName, String elementName, String elementValue) {
         try {
-            String filepath = "src/test/resources/TestData.xml";
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-            Document doc = docBuilder.parse(filepath);
+            Document doc = docBuilder.parse(filePath);
             Node testDAta = doc.getFirstChild();
             Node users = doc.getElementsByTagName(parentName).item(0);
             NamedNodeMap attribute = users.getAttributes();
@@ -42,9 +41,9 @@ public class XmlWriter {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(doc);
-            StreamResult result = new StreamResult(new File(filepath));
+            StreamResult result = new StreamResult(new File(filePath));
             transformer.transform(source, result);
-            LOGGER.info("Done writing XML");
+            LOGGER.info("Done writing to XML");
         } catch (IOException | ParserConfigurationException | SAXException | TransformerException e) {
             e.printStackTrace();
         }
