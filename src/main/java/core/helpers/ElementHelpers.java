@@ -1,7 +1,6 @@
 package core.helpers;
 
 import com.utils.handler.ElementHelper;
-import core.base.BaseTest;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -9,38 +8,43 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class ElementHelpers extends BaseTest {
+import static core.base.BaseTest.webDriver;
 
-    private static final String operatingSystem = System.getProperty("os.name");
+public class ElementHelpers {
 
-    public static void waitForElement(WebElement element, int Time) {
-        WebDriverWait wait = new WebDriverWait(webDriver, Time);
-        wait.until(ExpectedConditions.visibilityOf(element));
+    private static final int TIME_OUT_IN_SECONDS = 60;
+    private static WebDriverWait webDriverWait;
+    private static Actions actions;
+    private static final String OPERATING_SYSTEM = System.getProperty("os.name");
+
+    public static void elementToBeVisible(WebElement webElement) {
+        webDriverWait = new WebDriverWait(webDriver, TIME_OUT_IN_SECONDS);
+        webDriverWait.until(ExpectedConditions.visibilityOf(webElement));
     }
 
-    public static void waitForClick(WebElement element, int Time) {
-        WebDriverWait wait = new WebDriverWait(webDriver, Time);
-        wait.until(ExpectedConditions.elementToBeClickable(element));
+    public static void elementToBeClickable(WebElement webElement) {
+        webDriverWait = new WebDriverWait(webDriver, TIME_OUT_IN_SECONDS);
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(webElement));
     }
 
-    public static void scrollTo(WebElement element) {
-        ((JavascriptExecutor) webDriver).executeScript("arguments[0].scrollIntoView(false);", element);
+    public static void clickSafe(WebElement webElement) {
+        ElementHelper.safeClick(webElement);
     }
 
-    public static void hoverOnElement(WebElement element) {
-        Actions actions = new Actions(webDriver);
-        actions.moveToElement(element).perform();
+    public static void scrollTo(WebElement webElement) {
+        ((JavascriptExecutor) webDriver).executeScript("arguments[0].scrollIntoView(false);", webElement);
     }
 
-    public static void safeClick(WebElement element) {
-        ElementHelper.safeClick(element);
+    public static void hoverOnElement(WebElement webElement) {
+        actions = new Actions(webDriver);
+        actions.moveToElement(webElement).perform();
     }
 
-    public static void updateAllText(WebElement element, String newText) {
-        if (operatingSystem.equals("Mac OS X")) {
-            element.sendKeys(Keys.chord(Keys.COMMAND, "a"), newText);
+    public static void updateInputField(WebElement webElement, String text) {
+        if (OPERATING_SYSTEM.equals("Mac OS X")) {
+            webElement.sendKeys(Keys.chord(Keys.COMMAND, "a"), text);
         } else {
-            element.sendKeys(Keys.chord(Keys.CONTROL, "a"), newText);
+            webElement.sendKeys(Keys.chord(Keys.CONTROL, "a"), text);
         }
     }
 

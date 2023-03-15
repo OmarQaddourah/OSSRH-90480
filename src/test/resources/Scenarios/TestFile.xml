@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="Smoke Test For Appearance Classes">
-    <test name=" --Appearance Classes--" preserve-order="true">
+    <test name="Smoke Tests" preserve-order="true">
         <classes>
             <class name="com.test.HomeTest"/>
         </classes>
-    </test><!-- test -->
-</suite> <!-- Suite -->
+    </test>
+</suite>

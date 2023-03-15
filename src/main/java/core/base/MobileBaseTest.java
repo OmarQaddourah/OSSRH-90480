@@ -18,7 +18,7 @@ public class MobileBaseTest {
     @BeforeClass()
     public static void setupDriver() {
         getAppiumDriver().setup();
-        appiumDriver.getDriver().setSetting(Setting.WAIT_FOR_IDLE_TIMEOUT, 200);
+        appiumDriver.getDriver().setSetting(Setting.WAIT_FOR_IDLE_TIMEOUT, 5000);
     }
 
     @AfterClass()
