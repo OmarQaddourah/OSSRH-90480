@@ -1,32 +1,30 @@
 package core.helpers;
 
-import core.base.BaseTest;
-
-import java.security.SecureRandom;
+import java.util.Random;
 
 import static com.utils.PropReader.readConfig;
 import static com.utils.readers.XMLFileReader.getElementTextByTagName;
+import static core.base.GlobalValues.globalMap;
 
-public class DataHelper extends BaseTest {
+public class DataHelper {
 
-    public static String getRandString(int vinLength) {
-        String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+    public static String getRandomString(String language, int vinLength) {
+        String englishCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        String arabicCharacters = "ابتثجحخدذرزسشصضطظعغفقكلمنهوي";
         StringBuilder salt = new StringBuilder();
-        SecureRandom random = new SecureRandom();
-        while (salt.length() < vinLength) {
-            int index = (int) (random.nextFloat() * chars.length());
-            salt.append(chars.charAt(index));
-        }
-        return salt.toString();
-    }
+        Random random = new Random();
 
-    public static String getRandArabicString(int vinLength) {
-        String chars = "ابتثجحخدذرزسشصضطظعغفقكلمنهوي١٢٣٤٥٦٧٨٩٠";
-        StringBuilder salt = new StringBuilder();
-        SecureRandom random = new SecureRandom();
         while (salt.length() < vinLength) {
-            int index = (int) (random.nextFloat() * chars.length());
-            salt.append(chars.charAt(index));
+            switch (language) {
+                case "Arabic":
+                    int arabicIndex = (int) (random.nextFloat() * arabicCharacters.length());
+                    salt.append(arabicCharacters.charAt(arabicIndex));
+                    break;
+                case "English":
+                    int englishIndex = (int) (random.nextFloat() * englishCharacters.length());
+                    salt.append(englishCharacters.charAt(englishIndex));
+                    break;
+            }
         }
         return salt.toString();
     }
@@ -40,7 +38,7 @@ public class DataHelper extends BaseTest {
     }
 
     public static String getTestData(String testKey) {
-        String dataFile = readConfig("datafile");
+        String dataFile = readConfig("readDataFile");
         return getElementTextByTagName(dataFile, testKey);
     }
 

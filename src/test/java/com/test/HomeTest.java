@@ -3,8 +3,10 @@ package com.test;
 import com.pages.Homepage;
 import core.base.BaseTest;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+@Listeners(com.utils.ExtentReport.TestListener.class)
 public class HomeTest extends BaseTest {
 
     private Homepage homepage;

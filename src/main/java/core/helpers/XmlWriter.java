@@ -1,5 +1,6 @@
 package core.helpers;
 
+import com.utils.PropReader;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
@@ -19,11 +20,11 @@ public class XmlWriter {
 
     private static final Logger LOGGER = Logger.getLogger(Thread.currentThread().getStackTrace()[0].getClassName());
 
-    public static void writeToXmlFile(String filePath, String parentName, String elementName, String elementValue) {
+    public static void writeToXmlFile(String parentName, String elementName, String elementValue) {
         try {
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-            Document doc = docBuilder.parse(filePath);
+            Document doc = docBuilder.parse(PropReader.readConfig("writeDataFile"));
             Node testDAta = doc.getFirstChild();
             Node users = doc.getElementsByTagName(parentName).item(0);
             NamedNodeMap attribute = users.getAttributes();
@@ -41,7 +42,7 @@ public class XmlWriter {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(doc);
-            StreamResult result = new StreamResult(new File(filePath));
+            StreamResult result = new StreamResult(new File(PropReader.readConfig("writeDataFile")));
             transformer.transform(source, result);
             LOGGER.info("Done writing to XML");
         } catch (IOException | ParserConfigurationException | SAXException | TransformerException e) {
