@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.selenium_appium</groupId>
-    <artifactId>Selenium-Appium-Java</artifactId>
-    <version>1.0</version>
+    <groupId>io.github.OmarQaddourah</groupId>
+    <artifactId>Selenium-Java-OmarQaddourah</artifactId>
+    <version>2.0</version>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -15,113 +15,40 @@
     </properties>
 
     <dependencies>
-        <!--        <dependency>-->
-        <!--            <groupId>com.github.krraghavan</groupId>-->
-        <!--            <artifactId>xeger</artifactId>-->
-        <!--            <version>1.0.0-RELEASE</version>-->
-        <!--        </dependency>-->
-
-        <!--        <dependency>-->
-        <!--            <groupId>com.sun.mail</groupId>-->
-        <!--            <artifactId>javax.mail</artifactId>-->
-        <!--            <version>1.6.2</version>-->
-        <!--        </dependency>-->
-
-        <!--        <dependency>-->
-        <!--        provides the building blocks for both client side validation and server side data validation. It may be used standalone or with a framework like Struts.-->
-        <!--            <groupId>commons-validator</groupId>-->
-        <!--            <artifactId>commons-validator</artifactId>-->
-        <!--            <version>1.7</version>-->
-        <!--        </dependency>-->
-
-        <!--        <dependency>-->
-        <!--        used for testing web applications using Selenium WebDriver.-->
-        <!--            <groupId>io.github.bonigarcia</groupId>-->
-        <!--            <artifactId>webdrivermanager</artifactId>-->
-        <!--            <version>5.3.1</version>-->
-        <!--        </dependency>-->
-
-        <!--        <dependency>-->
-        <!--        refers to the Apache Commons project, which is a collection of reusable Java components. The Apache Commons project provides a set of lightweight and efficient libraries that can be used to enhance and simplify Java development.-->
-        <!--            <groupId>org.apache.commons</groupId>-->
-        <!--            <artifactId>commons-lang3</artifactId>-->
-        <!--            <version>3.12.0</version>-->
-        <!--        </dependency>-->
-
-        <!--        <dependency>-->
-        <!--        used for SSH (Secure Shell) communication and remote command execution. Apache SSHD is an open-source Java library that provides an SSH server and client implementation, allowing Java programs to communicate securely over SSH channels.-->
-        <!--            <groupId>org.apache.sshd</groupId>-->
-        <!--            <artifactId>sshd-core</artifactId>-->
-        <!--            <version>2.9.1</version>-->
-        <!--        </dependency>-->
-
-        <!--        <dependency>-->
-        <!--        for content detection and extraction from various file formats. Apache Tika is an open-source content detection and analysis framework that can be used to extract text, metadata, and structured data from documents in a variety of formats, including HTML, XML, PDF, Microsoft Office documents, and more.-->
-        <!--            <groupId>org.apache.tika</groupId>-->
-        <!--            <artifactId>tika-core</artifactId>-->
-        <!--            <version>2.6.0</version>-->
-        <!--        </dependency>-->
-
-        <!--        <dependency>-->
-        <!--        referring to is a specific library or tool developed by JetBrains that is being used in the Selenium Maven project.-->
-        <!--            <groupId>org.jetbrains</groupId>-->
-        <!--            <artifactId>annotations</artifactId>-->
-        <!--            <version>23.0.0</version>-->
-        <!--        </dependency>-->
-
-        <!--        <dependency>-->
-        <!--        publishing build information to JFrog Artifactory, a binary repository manager.-->
-        <!--            <groupId>org.jfrog.buildinfo</groupId>-->
-        <!--            <artifactId>artifactory-maven-plugin</artifactId>-->
-        <!--            <version>3.4.0</version>-->
-        <!--        </dependency>-->
-
-        <!--        <dependency>-->
-        <!--            <groupId>io.appium</groupId>-->
-        <!--            <artifactId>java-client</artifactId>-->
-        <!--            <version>8.2.0</version>-->
-        <!--        </dependency>-->
-
-        <!--        <dependency>-->
-        <!--            <groupId>io.rest-assured</groupId>-->
-        <!--            <artifactId>rest-assured</artifactId>-->
-        <!--            <version>5.2.0</version>-->
-        <!--        </dependency>-->
-
-        <!--        <dependency>-->
-        <!--            <groupId>org.projectlombok</groupId>-->
-        <!--            <artifactId>lombok</artifactId>-->
-        <!--            <version>1.18.24</version>-->
-        <!--        </dependency>-->
-
-        <!--        <dependency>-->
-        <!--            <groupId>org.seleniumhq.selenium</groupId>-->
-        <!--            <artifactId>selenium-java</artifactId>-->
-        <!--            <version>4.6.0</version>-->
-        <!--        </dependency>-->
-
-        <!--        <dependency>-->
-        <!--            <groupId>org.testng</groupId>-->
-        <!--            <artifactId>testng</artifactId>-->
-        <!--            <version>7.6.1</version>-->
-        <!--        </dependency>-->
-
-        <!--        <dependency>-->
-        <!--            <groupId>com.relevantcodes</groupId>-->
-        <!--            <artifactId>extentreports</artifactId>-->
-        <!--            <version>2.41.2</version>-->
-        <!--        </dependency>-->
-
-        <!--        <dependency>-->
-        <!--            <groupId>com.aventstack</groupId>-->
-        <!--            <artifactId>extentreports</artifactId>-->
-        <!--            <version>5.0.9</version>-->
-        <!--        </dependency>-->
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>5.3.1</version>
+        </dependency>
 
         <dependency>
-            <groupId>org.bitbucket.mawdoo3</groupId>
-            <artifactId>mawdoo3-automation-test</artifactId>
-            <version>1.27.0</version>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>23.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.24</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.6.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>7.6.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>5.0.9</version>
         </dependency>
     </dependencies>
 
